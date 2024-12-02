@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "Creating bucket"
+
+if [ -z "$1" ]; then
+  echo "No bucket name is given"
+  exit 1
+fi
+
+BUCKET_NAME=$1 
+
+aws s3api delete-bucket \
+--bucket $BUCKET_NAME \
+--output text
