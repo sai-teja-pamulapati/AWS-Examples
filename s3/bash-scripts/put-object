@@ -1,1 +1,17 @@
 #!/usr/bin/env bash
+
+echo "Putting Objects into the bucket"
+
+if [ -z "$1" ]; then
+  echo "No bucket name is given"
+  exit 1
+fi
+
+BUCKET_NAME=$1 
+
+FILE_NAME=$2
+
+aws s3api put-object \
+--bucket $BUCKET_NAME \
+--key $FILE_NAME \
+--output text

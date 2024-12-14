@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Creating bucket"
+echo "Deleting bucket"
 
 if [ -z "$1" ]; then
   echo "No bucket name is given"

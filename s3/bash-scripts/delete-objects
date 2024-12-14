@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+  echo "No bucket name is given"
+  exit 1
+fi
+
+echo "Deleting Objects in Bucket"
+
+BUCKET_NAME=$1 
+
+
+aws s3api delete-objects --bucket $BUCKET_NAME \
+  --delete "$(aws s3api list-object-versions --bucket $BUCKET_NAME --query 'Versions[].{Key:Key,VersionId:VersionId}' --output json | jq -c '{Objects: .}')"
