@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Create and assume an S3 Role"
+Parameters:
+  BucketName:
+   Type: String
+   Default: "sts-s3-bucket-123232"
+Resources:
+  S3Buckect:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Ref BucketName
+  StsRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: "arn:aws:iam::673035885865:user/sts-machine-user"
+              # Service:
+              #   - s3.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Path: /
+      Policies:
+        - PolicyName: s3Access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: '*'
+                Resource: [
+                  'arn:aws:s3:::*',
+                  !Sub 'arn:aws:s3:::${BucketName}'
+                ]
