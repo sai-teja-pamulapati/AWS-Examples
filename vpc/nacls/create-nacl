@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+
+# 
+
+#Create Nacl
+
+
+aws ec2 describe-images \
+    --owners "amazon" \
+    --filters "Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2" \
+              "Name=state,Values=available" \
+    --region ca-central-1 \
+    --query "Images | sort_by(@, &CreationDate)[-1].ImageId" \
+    --output text
+
+aws ec2 create-network-acl --vpc-id vpc-0dc3f81eaa9d1c215

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+
+aws cloudformation update-stack \
+ --template-body file://template.yaml \
+ --stack-name create-ec2-cfm \
+ --region ca-central-1 \
+ --capabilities CAPABILITY_IAM

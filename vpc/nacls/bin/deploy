@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+
+aws cloudformation deploy \
+--template-file template.yaml \
+ --stack-name create-ec2-cfm \
+ --region ca-central-1 \
+ --capabilities CAPABILITY_IAM
