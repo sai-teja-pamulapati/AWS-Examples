@@ -2,7 +2,7 @@
 
 
 aws cloudformation deploy \
---template-file template.yaml \
- --stack-name create-ec2-cfm \
+--template-file sg/template.yaml \
+ --stack-name sg-project-cfm \
  --region ca-central-1 \
  --capabilities CAPABILITY_IAM

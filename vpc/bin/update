@@ -3,6 +3,6 @@
 
 aws cloudformation update-stack \
  --template-body file://template.yaml \
- --stack-name create-ec2-cfm \
+ --stack-name sg-project-cfm \
  --region ca-central-1 \
  --capabilities CAPABILITY_IAM
