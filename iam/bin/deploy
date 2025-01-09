@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+
+aws cloudformation deploy \
+--template-file type-of-policies/template.yaml \
+ --stack-name iam-project-cfm \
+ --region ca-central-1 \
+ --capabilities CAPABILITY_NAMED_IAM
